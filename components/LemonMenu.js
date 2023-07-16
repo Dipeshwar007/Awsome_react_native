@@ -244,11 +244,14 @@ const Item = ({UsersData}) =>{
     )
 }
 
+const Header = () => <View style={{height:30, alignItems:'center'}}><Text style={scrollStyle.heading}>Menu</Text></View>
+const Seperator = ()=> <View style={{height:2,backgroundColor:'white'}}></View>
+const Footer = () => <View style={{height:30 ,alignItems:'center'}}><Text style={scrollStyle.heading}>End of menu</Text></View>
 
 export default function LemonMenu() {
     return(
         <View style={scrollStyle.mainScroll}>
-            <Text style={scrollStyle.heading}>Menu</Text>
+            {/* <Text style={scrollStyle.heading}>Menu</Text> */}
             {/* <ScrollView style={scrollStyle.scrollContainer} horizontal={true}>
                 {
                     menuList.map((item,index) => {
@@ -258,11 +261,18 @@ export default function LemonMenu() {
                     })
                 }
             </ScrollView> */}
-            <View style={scrollStyle.navmenu} >
+            {/* <View style={scrollStyle.navmenu} >
                 <Text style={scrollStyle.subHeading}>Name</Text>
                 <Text style={scrollStyle.subHeading}>Email</Text>
-            </View>
-            <FlatList data={users} renderItem={({item}) => <Item UsersData={item} />} keyExtractor={item=>item.id} horizontal={false}/>
+            </View> */}
+            <FlatList 
+                data={users} 
+                renderItem={({item}) => <Item UsersData={item} />} 
+                keyExtractor={item=>item.id} horizontal={false}
+                ListHeaderComponent={Header}
+                ItemSeparatorComponent={Seperator}
+                ListFooterComponent={Footer}
+            />
         </View>
     )
 }
@@ -270,7 +280,7 @@ const scrollStyle = StyleSheet.create({
     mainScroll:{
         flex:1,
         alignItems:'center',
-        backgroundColor:'#000',
+        // backgroundColor:'#000',
     },
     scrollContainer:{
         // paddingHorizontal:0,
